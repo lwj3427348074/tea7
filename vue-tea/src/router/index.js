@@ -33,6 +33,70 @@ const routes = [
     component: () =>
       import(/* 懒加载 */ '../views/My.vue'),
   },
+  {
+    path: '/search',
+    name: 'Search',
+    component: () =>
+      import(/* 懒加载 */ '../views/Search.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'SearchIndex',
+        component: () =>
+          import(/* 懒加载 */ '../components/search/SearchIndex.vue'),
+      },
+      {
+        path: 'list',
+        name: 'list',
+        component: () =>
+          import(/* 懒加载 */ '../components/search/SearchList.vue'),
+      }
+    ]
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: () =>
+      import(/* 懒加载 */ '../views/Detail.vue'),
+  },
+  {
+    path: '/login',
+    name: 'Login',
+    component: () =>
+      import(/* 懒加载 */ '../views/login/Login.vue'),
+  },
+  {
+    path: '/userLogin',
+    name: 'UserLogin',
+    component: () =>
+      import(/* 懒加载 */ '../views/login/UserLogin.vue'),
+  },
+  {
+    path: '/register',
+    name: 'Register',
+    component: () =>
+      import(/* 懒加载 */ '../views/login/Register.vue'),
+  },
+  {
+    path: '/recovery',
+    name: 'Recovery',
+    component: () =>
+      import(/* 懒加载 */ '../views/recovery/Recovery.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'RecoveryIndex',
+        component: () =>
+          import(/* 懒加载 */ '../views/recovery/RecoveryIndex.vue'),
+      },
+      {
+        path: '/recoverybtn',
+        name: 'RecoveryBtn',
+        component: () =>
+          import(/* 懒加载 */ '../views/recovery/RecoveryBtn.vue'),
+      }
+    ]
+  },
 ]
 
 const router = new VueRouter({

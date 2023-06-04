@@ -5,7 +5,7 @@
     </Card>
     <ul>
       <li v-for="item in severnCommendList" :key="item.id" @click="$router.push('/goodslist')">
-        <router-link :to="item.path" class="bd"><img :src="item.imgUrl"></router-link>
+        <router-link :to="item.path" class="bd"><img v-lazy="item.imgUrl"></router-link>
       </li>
     </ul>
   </div>

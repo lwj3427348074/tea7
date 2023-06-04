@@ -138,24 +138,14 @@
 <script>
 export default {
   name: 'LongJing',
-  props: ['scroll'],
+  props: ['newData', 'scroll'],
   data() {
     return {
-      headerImages: {
-        background: '../images/home/puer/puer1.jpg',
-        person: '../images/home/puer/person.jpg',
-      },
-      kouliang: {
-        image1: '../images/home/puer/puer2.jpg',
-        image2: '../images/home/puer/puer3.jpg',
-        product: '../images/home/puer/puer4.jpeg',
-      },
-      backgroundImages: '../images/home/longjing/background.gif',
-      productImages: {
-        image1: '../images/home/puer/product1.jpeg',
-        image2: '../images/home/puer/product2.jpeg',
-      },
-      dashiImages: '../images/home/longjing/dashi.jpg',
+      headerImages: {},
+      kouliang: {},
+      backgroundImages: '',
+      productImages: {},
+      dashiImages: '',
     }
   },
   methods: {
@@ -163,266 +153,277 @@ export default {
       //   this.$bus.$emit('imageLoading')
     },
   },
+  mounted() {
+    console.log(this.newData.headerImages)
+    this.headerImages = this.newData.headerImages
+    this.kouliang = this.newData.kouliang
+    this.backgroundImages = this.newData.backgroundImages
+    this.productImages = this.newData.productImages
+    this.dashiImages = this.newData.dashiImages
+  },
 }
 </script>
 
-<style scoped>
+<style lang="less" scoped>
 .longjing {
   background-color: #f5f5f5;
-}
-.s-img {
-  width: 100%;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-}
-.top-des {
-  background: #fff;
-}
-.top-des > div {
-  position: relative;
-  font-size: 0.34rem;
-  line-height: 1.5;
-  text-align: center;
-  padding: 0.266667rem;
-  display: flex;
-}
-.tea-manager {
-  text-align: center;
-  width: 30%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  font-size: 0.48rem;
-  color: #b54f4a;
-}
-.tea-manager img {
-  width: 1.866667rem;
-  height: 1.866667rem;
-  border-radius: 50%;
-  border: 1px solid #dedede;
-  text-align: center;
-  margin: 0 auto;
-}
-.tea-manager b {
-  display: block;
-  white-space: nowrap;
-  text-align: center;
-}
-.tea-manager span {
-  color: #000;
-  white-space: nowrap;
-  font-size: 0.32rem;
-}
-.top-des p {
-  width: 70%;
-  padding-left: 0.266667rem;
-  font-size: 0.36rem;
-  box-sizing: border-box;
-  text-align: justify;
-  line-height: 1.5;
-}
-.top-des .wechat {
-  text-align: center;
-  color: #b54f4a;
-  display: block;
-  width: 100%;
-  font-size: 0.35rem;
-  padding-bottom: 0.266667rem;
-}
-.wechat em {
-  font-weight: 400;
-}
-.tea-item {
-  background: #fff;
-  margin-top: 1.066667rem;
-}
-.introduce-title {
-  font-size: 0.373333rem;
-  color: #555;
-  margin: 0.266667rem auto;
-  border-bottom: 1px #b54f4a solid;
-  position: relative;
-}
-.introduce-title::after,
-.introduce-title::before {
-  content: '';
-  width: 0.08rem;
-  height: 0.08rem;
-  border-radius: 50%;
-  background: #b54f4a;
-  display: block;
-  position: absolute;
-}
-.introduce-title::before {
-  left: 0;
-  bottom: -0.053333rem;
-}
-.introduce-title::after {
-  right: 0;
-  bottom: -0.053333rem;
-}
-.introduce-title span {
-  position: absolute;
-  border-radius: 50%;
-  width: 0.533333rem;
-  height: 0.533333rem;
-  top: -0.266667rem;
-  left: 50%;
-  margin-left: -0.266667rem;
-  color: #fff;
-  line-height: 1.4;
-  background: #b54f4a;
-  text-align: center;
-}
-.introduce-title span i {
-  font-size: 0.373333rem;
-}
-.top-title {
-  font-size: 0.5rem;
-  text-align: center;
-  color: #b54f4a;
-  margin: 0.533333rem auto 0.266667rem;
-  display: block;
-}
-.introduce-image {
-  display: flex;
-  padding: 0 0.133333rem 0.266667rem;
-}
-.introduce-image span {
-  width: 50%;
-  float: left;
-}
-.introduce-image span img {
-  width: 100%;
-  height: 100%;
-  padding: 0.133333rem;
-  box-sizing: border-box;
-}
-.introduce-format {
-  padding: 0.266667rem 0.266667rem 0.533333rem;
-  display: flex;
-}
-.introduce-format span {
-  width: 50%;
-  box-sizing: border-box;
-  font-size: 0.36rem;
-  line-height: 150%;
-  margin-right: 0.266667rem;
-  padding: 0.266667rem;
-  flex-direction: column;
-  display: flex;
-  justify-content: center;
-}
-.introduce-format span p {
-  padding: 0.266667rem 0;
-  line-height: 0.6rem;
-  letter-spacing: 0.05rem;
-}
-.product-kouliang {
-  width: 50%;
-  box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-color: #fff;
-}
-.product-kouliang img {
-  width: 100%;
-  border: 0;
-  vertical-align: middle;
-}
-.product-kouliang .name {
-  font-size: 0.386rem;
-  font-weight: bold;
-  margin-top: 0.266667rem;
-  text-align: center;
-}
-.product-kouliang .price {
-  text-align: center;
-  margin-top: 0.266667rem;
-  color: #b54f4a;
-}
-.product-kouliang .price b {
-  font-size: 0.386rem;
-}
-.product-kouliang .price em {
-  font-weight: normal;
-  white-space: nowrap;
-  display: inline-block;
-  border: 1px solid #ffd580;
-  line-height: 0.373333rem;
-  background: #ffffe5;
-  padding: 1px 0.08rem;
-  font-size: 0.32rem;
-  color: #b54f4a;
-  margin-left: 0.133333rem;
-  font-style: normal;
-}
-.product-kouliang .subtitle {
-  margin-bottom: 0.213333rem;
-  margin-top: 0.213333rem;
-  color: #000;
-  font-size: 0.34rem;
-  width: 100%;
-  text-align: center;
-  border-top: 1px solid #f5f5f5;
-  padding-top: 0.266667rem;
-}
-.product-kouliang .seebtn {
-  padding: 0.133333rem 0.266667rem;
-  text-align: center;
-  background: #b54f4a;
-  color: #fff;
-  font-size: 0.373333rem;
-  font-weight: 700;
-  margin: 0.266667rem auto;
-  border-radius: 5px;
-  width: 3rem;
-}
-.plate-introduce {
-  padding: 0.266667rem 0.266667rem 0;
-  font-size: 0.36rem;
-  text-align: justify;
-}
-.plate-introduce p {
-  text-indent: 0.82rem;
-  letter-spacing: 0.05rem;
-  line-height: 0.6rem;
-}
-.introduce-format-list {
-  display: flex;
-  margin: 0.133333rem;
-}
-.introduce-format-list .list-product {
-  padding: 0.133333rem 0;
-}
-.addp {
-  padding: 0.133333rem;
-  float: left;
-}
-.back-dashi {
-  padding-bottom: 0.533333rem;
-  background: #fff;
-  margin-top: 1.066667rem;
-}
-.back-dashi p {
-  padding: 0.133333rem 0.266667rem;
-  text-align: center;
-  background: #b54f4a;
-  color: #fff !important;
-  font-size: 0.373333rem;
-  font-weight: 700;
-  margin: 0.266667rem auto;
-  border-radius: 0.133333rem;
-  width: 3rem;
-  display: block;
-}
-.introduce-image .dashicha-img {
-  width: 100%;
-  height: 100%;
-  padding: 0.133333rem;
-  box-sizing: border-box;
+  width: 100vw;
+  .s-img {
+    width: 100%;
+    text-align: center;
+    display: block;
+    margin: 0 auto;
+  }
+  .top-des {
+    background: #fff;
+    > div {
+      position: relative;
+      font-size: 0.7969rem;
+      line-height: 1.5;
+      text-align: center;
+      padding: 0.625rem;
+      display: flex;
+      .tea-manager {
+        text-align: center;
+        width: 30%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 1.125rem;
+        color: #b54f4a;
+        img {
+          width: 4.375rem;
+          height: 4.375rem;
+          border-radius: 50%;
+          border: 1px solid #dedede;
+          text-align: center;
+          margin: 0 auto;
+        }
+        b {
+          display: block;
+          white-space: nowrap;
+          text-align: center;
+        }
+        span {
+          color: #000;
+          white-space: nowrap;
+          font-size: 0.75rem;
+        }
+      }
+      p {
+        width: 70%;
+        padding-left: 0.625rem;
+        font-size: 0.8438rem;
+        box-sizing: border-box;
+        text-align: justify;
+        line-height: 1.5;
+      }
+    }
+    .wechat {
+      text-align: center;
+      color: #b54f4a;
+      display: block;
+      width: 100%;
+      font-size: 0.8125rem;
+      padding-bottom: 0.625rem;
+      em {
+        font-weight: 400;
+      }
+    }
+  }
+
+  .tea-item {
+    background: #fff;
+    margin-top: 2.5rem;
+    .introduce-title {
+      font-size: 0.875rem;
+      color: #555;
+      margin: 0.625rem auto;
+      border-bottom: 1px #b54f4a solid;
+      position: relative;
+      span {
+        position: absolute;
+        border-radius: 50%;
+        width: 1.25rem;
+        height: 1.25rem;
+        top: -0.625rem;
+        left: 50%;
+        margin-left: -0.625rem;
+        color: #fff;
+        line-height: 1.4;
+        background: #b54f4a;
+        text-align: center;
+        i {
+          font-size: 12px;
+        }
+      }
+    }
+    .introduce-title::after,
+    .introduce-title::before {
+      content: '';
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: #b54f4a;
+      display: block;
+      position: absolute;
+    }
+    .introduce-title::before {
+      left: 0;
+      bottom: -2px;
+    }
+    .introduce-title::after {
+      right: 0;
+      bottom: -2px;
+    }
+    .top-title {
+      font-size: 1.125rem;
+      text-align: center;
+      color: #b54f4a;
+      margin: 1.25rem auto 0.625rem;
+      display: block;
+    }
+    .introduce-image {
+      display: flex;
+      padding: 0 0.3125rem 0.625rem;
+      .dashicha-img {
+        width: 100%;
+        height: 100%;
+        padding: 0.3125rem;
+        box-sizing: border-box;
+      }
+      span {
+        width: 50%;
+        float: left;
+        img {
+          width: 100%;
+          height: 100%;
+          padding: 0.3125rem;
+          box-sizing: border-box;
+        }
+      }
+    }
+    .introduce-format {
+      padding: 0.625rem 0.625rem 1.25rem;
+      display: flex;
+      span {
+        width: 50%;
+        box-sizing: border-box;
+        font-size: 0.8438rem;
+        line-height: 150%;
+        margin-right: 0.625rem;
+        padding: 0.625rem;
+        flex-direction: column;
+        display: flex;
+        justify-content: center;
+        p {
+          padding: 0.625rem 0;
+          line-height: 1.25rem;
+          letter-spacing: 0.125rem;
+        }
+      }
+      .product-kouliang {
+        width: 50%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: #fff;
+        img {
+          width: 100%;
+          border: 0;
+          vertical-align: middle;
+        }
+        .name {
+          font-size: 0.9375rem;
+          font-weight: bold;
+          margin-top: 0.625rem;
+          text-align: center;
+        }
+        .price {
+          text-align: center;
+          margin-top: 0.625rem;
+          color: #b54f4a;
+          b {
+            font-size: 0.9375rem;
+          }
+          em {
+            font-weight: normal;
+            white-space: nowrap;
+            display: inline-block;
+            border: 1px solid #ffd580;
+            line-height: 0.625rem;
+            background: #ffffe5;
+            padding: 1px 0.1875rem;
+            font-size: 0.75rem;
+            color: #b54f4a;
+            margin-left: 0.3125rem;
+            font-style: normal;
+          }
+        }
+        .subtitle {
+          margin-bottom: 0.5rem;
+          margin-top: 0.5rem;
+          color: #000;
+          font-size: 0.8125rem;
+          width: 100%;
+          text-align: center;
+          border-top: 1px solid #f5f5f5;
+          padding-top: 0.625rem;
+        }
+        .seebtn {
+          padding: 0.3125rem 0.625rem;
+          text-align: center;
+          background: #b54f4a;
+          color: #fff;
+          font-size: 0.875rem;
+          font-weight: 700;
+          margin: 0.625rem auto;
+          border-radius: 5px;
+          width: 7rem;
+        }
+      }
+    }
+    .plate-introduce {
+      padding: 0.625rem 0.625rem 0;
+      font-size: 0.875rem;
+      text-align: justify;
+      p {
+        text-indent: 2.125rem;
+        letter-spacing: 0.125rem;
+        line-height: 1.25rem;
+      }
+    }
+    .introduce-format-list {
+      display: flex;
+      margin: 0.3125rem;
+      .list-product {
+        padding: 0.3125rem 0;
+      }
+    }
+  }
+
+  .addp {
+    padding: 0.3125rem;
+    float: left;
+  }
+  .back-dashi {
+    padding-bottom: 1.25rem;
+    background: #fff;
+    margin-top: 2.5rem;
+    p {
+      padding: 0.3125rem 0.625rem;
+      text-align: center;
+      background: #b54f4a;
+      color: #fff !important;
+      font-size: 0.875rem;
+      font-weight: 700;
+      margin: 0.625rem auto;
+      border-radius: 0.3125rem;
+      width: 7rem;
+      display: block;
+    }
+  }
 }
 </style>

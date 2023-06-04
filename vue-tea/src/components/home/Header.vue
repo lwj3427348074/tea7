@@ -5,7 +5,7 @@
         <img src="@/assets/logo.png" alt="">
       </h1>
     </div>
-    <div class="search">
+    <div class="search" @click="goSearch">
       <div class="i">
         <van-icon name="search" size="1.2rem" />
       </div>
@@ -20,6 +20,11 @@
 <script>
 export default {
   name: 'Header',
+  methods: {
+    goSearch() {
+      this.$router.push('/search')
+    },
+  },
 }
 </script>
 

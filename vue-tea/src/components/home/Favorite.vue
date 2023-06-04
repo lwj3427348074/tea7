@@ -5,10 +5,10 @@
     </Card>
     <ul>
       <!-- <li v-for="item in favoriteList" :key="item.id" @click="goDetail(item)"> -->
-      <li v-for="item in favoriteList" :key="item.id">
+      <li v-for="item in favoriteList" :key="item.id" @click="goDetail(item.id)">
         <div class="bg-img">
           <!-- <img :src="item.imgUrl" @load="imageLoad"> -->
-          <img :src="item.imgUrl">
+          <img v-lazy="item.imgUrl">
         </div>
         <div class="name">{{item.name}}</div>
         <div class="price">
@@ -39,9 +39,6 @@ export default {
     // console.log(this.favoriteList)
   },
   methods: {
-    // imageLoad() {
-    //   this.$bus.$emit('imageLoading')
-    // },
     // async getDatas() {
     //   let res = await http.$axios({
     //     url: '/api/goods/alllist',
@@ -49,12 +46,19 @@ export default {
 
     //   this.favoriteList = res
     // },
-    goDetail(item) {
+    goDetail(id) {
       this.$router.push({
-        name: 'Detail',
+        path: '/detail',
+        //通过路由显式传值
         query: {
-          id: item.id,
+          id: id,
         },
+
+        //隐式传参
+        // name: 'Detail',
+        // params: {
+        //   id,
+        // },
       })
     },
   },

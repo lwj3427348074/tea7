@@ -1,6 +1,8 @@
 *{
   margin: 0;
   padding: 0;
+  
+  
 }
 ul{
   list-style: none;
@@ -8,3 +10,12 @@ ul{
 a{
   color: #222;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+

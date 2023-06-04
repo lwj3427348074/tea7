@@ -22,25 +22,26 @@
                   <Footer></Footer>
                 </main>
               </div>
-              <BaiCha v-else-if="t.id ===1"></BaiCha>
+              <BaiCha :newData="newData[t.id]" v-else-if="t.id ===1 && newData[t.id] !== undefined "></BaiCha>
               <DaHongPao :newData="newData[t.id]" v-else-if="t.id ===2 && newData[t.id] !== undefined "></DaHongPao>
-              <JinJunMei v-else-if="t.id ===3"></JinJunMei>
-              <LongJing v-else-if="t.id ===4"></LongJing>
-              <PuEr v-else-if="t.id ===5"></PuEr>
-              <XiaoZhong v-else-if="t.id ===6"></XiaoZhong>
+              <JinJunMei :newData="newData[t.id]" v-else-if="t.id ===3 && newData[t.id] !== undefined "></JinJunMei>
+              <LongJing :newData="newData[t.id]" v-else-if="t.id ===4 && newData[t.id] !== undefined "></LongJing>
+              <PuEr :newData="newData[t.id]" v-else-if="t.id ===5 && newData[t.id] !== undefined "></PuEr>
+              <XiaoZhong :newData="newData[t.id]" v-else-if="t.id ===6 && newData[t.id] !== undefined "></XiaoZhong>
               <div class="fotter"></div>
             </div>
           </div>
         </van-tab>
       </van-tabs>
-
     </div>
+
     <Tabbar></Tabbar>
   </div>
 </template>
 
 <script>
-import { getTabLists, getTeaLists } from '@/request/api/home'
+import { getTabLists } from '@/request/api/home'
+import http from '@/request/api/request'
 import Tabbar from '@/components/common/Tabbar.vue'
 import Header from '@/components/home/Header.vue'
 import Swipe from '@/components/home/Swipe.vue'
@@ -89,40 +90,40 @@ export default {
     }
   },
   methods: {
-    // async getData() {
-    //   try {
-    //     let res = await getTeaLists()
-    //     this.tabs = Object.freeze(res.data.data.topBar)
-    //     this.newData = Object.freeze(res.data.data.data)
-    //     console.log(res.data.data.data)
-    //   } catch (error) {
-    //     console.log('请求数据失败：', error)
-    //   }
-    // },
-    getData() {
-      getTeaLists()
-        .then((res) => {
-          this.tabs = Object.freeze(res.data.data.topBar)
-          this.newData[0] = Object.freeze(res.data.data.data)
+    async getData() {
+      try {
+        let res = await http.$axios({
+          url: '/api/index_list/0/data/1',
         })
-        .catch((error) => {
-          console.log('请求数据失败：', error)
-        })
+        this.tabs = Object.freeze(res.topBar)
+        this.newData[0] = Object.freeze(res.data)
+        console.log(this.newData[0])
+      } catch (error) {
+        console.log('请求数据失败：', error)
+      }
     },
+    // getData() {
+    //   getTeaLists()
+    //     .then((res) => {
+    //       this.tabs = Object.freeze(res.data.data.topBar)
+    //       this.newData[0] = Object.freeze(res.data.data.data)
+    //     })
+    //     .catch((error) => {
+    //       console.log('请求数据失败：', error)
+    //     })
+    // },
     addData(index) {
       getTabLists(index)
         .then((res) => {
-          this.newData[index] = res.data.data.data
-          // this.$set(this.newData, index, res.data.data.data)
+          this.$set(this.newData, index, res.data.data.data)
           console.log(this.newData[index])
-          console.log(this.newData[index] === undefined)
         })
         .catch((error) => {
           console.log('请求数据失败：', error)
         })
     },
     onClick(index, title) {
-      console.log(index)
+      // console.log(index)
       this.addData(index)
     },
   },
@@ -136,6 +137,7 @@ export default {
 .home {
   width: 100vw;
   position: relative;
+
   .tab {
     position: fixed;
     top: 0;

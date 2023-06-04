@@ -12,7 +12,7 @@
             <span>{{item.content}}</span>
           </div>
           <!-- <img :src="item.imgUrl" @load="imageLoad"> -->
-          <img :src="item.imgUrl">
+          <img v-lazy="item.imgUrl">
         </router-link>
       </li>
     </ul>

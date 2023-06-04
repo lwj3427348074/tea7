@@ -4,7 +4,7 @@
     <ul>
       <li v-for="r in recommedList" :key="r.id">
         <h2>
-          <img :src="r.imgUrl" alt="">
+          <img v-lazy="r.imgUrl" alt="">
         </h2>
         <div class="right">
           <div>

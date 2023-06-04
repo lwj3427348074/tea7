@@ -61,55 +61,9 @@ export default {
   //   props: ['scroll'],
   data() {
     return {
-      adImages: {
-        image1: '../images/home/jinjunmei/jinjunmei1.jpg',
-        image2: '../images/home/jinjunmei/jinjunmei2.jpg',
-        image3: '../images/home/jinjunmei/jinjunmei3.jpg',
-        image4: '../images/home/jinjunmei/jinjunmei7.jpg',
-        image5: '../images/home/jinjunmei/jinjunmei8.jpg',
-        image6: '../images/home/jinjunmei/jinjunmei9.jpg',
-        image7: '../images/home/jinjunmei/jinjunmei10.jpg',
-        image8: '../images/home/jinjunmei/jinjunmei11.jpg',
-      },
-      jichuImages: [
-        { id: 1, image: '../images/home/jinjunmei/jinjunmei4.jpeg' },
-        { id: 2, image: '../images/home/jinjunmei/jinjunmei5.jpg' },
-        { id: 3, image: '../images/home/jinjunmei/jinjunmei6.jpg' },
-      ],
-      products: [
-        {
-          id: 1,
-          title: '金骏眉-御品豪茗礼盒 250g',
-          content: '滋味醇香 彰显情意',
-          imageUrl: '../images/home/jinjunmei/product1.jpeg',
-          price: '128',
-          path: '',
-        },
-        {
-          id: 2,
-          title: '金骏眉-如意小罐装180g',
-          content: '经典小罐 罐罐尊享',
-          imageUrl: '../images/home/jinjunmei/product2.jpeg',
-          price: '158',
-          path: '',
-        },
-        {
-          id: 3,
-          title: '金骏眉-特级黄芽单罐200g',
-          content: '名茶易得 佳茗难寻',
-          imageUrl: '../images/home/jinjunmei/product3.jpeg',
-          price: '188',
-          path: '',
-        },
-        {
-          id: 4,
-          title: '金骏眉-以茶为礼 200g',
-          content: '复古镂空 古典雅致',
-          imageUrl: '../images/home/jinjunmei/product4.jpeg',
-          price: '188',
-          path: '',
-        },
-      ],
+      adImages: {},
+      jichuImages: [],
+      products: [],
     }
   },
   methods: {
@@ -119,6 +73,12 @@ export default {
     // backTop() {
     //   this.scroll.scrollTo(0, 0, 1000)
     // },
+  },
+  mounted() {
+    // console.log(this.newData.adImages)
+    this.adImages = this.newData.adImages
+    this.jichuImages = this.newData.jichuImages
+    this.products = this.newData.products
   },
 }
 </script>

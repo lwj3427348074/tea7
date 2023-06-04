@@ -2,7 +2,7 @@
   <div class="swipe">
     <van-swipe class="my-swipe" :autoplay="3000" indicator-color="#b0352f">
       <van-swipe-item v-for="s in swipeList" :key="s.id">
-        <img :src="s.imgUrl">
+        <img v-lazy="s.imgUrl">
       </van-swipe-item>
     </van-swipe>
   </div>

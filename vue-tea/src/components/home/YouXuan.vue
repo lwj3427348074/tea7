@@ -7,7 +7,7 @@
       <van-swipe :loop="false" :width="280">
         <van-swipe-item v-for="y in youXuanList" :key="y.id">
           <div>
-            <img :src="y.imgUrl" alt="">
+            <img v-lazy="y.imgUrl" alt="">
           </div>
         </van-swipe-item>
         <template #indicator>

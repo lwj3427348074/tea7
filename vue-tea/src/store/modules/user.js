@@ -1,4 +1,4 @@
-import { USER_LOGIN, INIT_USER } from './mutation-types'
+import { USER_LOGIN, INIT_USER, LOGIN_OUT } from './mutation-types'
 import { Dialog } from 'vant';
 export default {
   state: {
@@ -32,7 +32,7 @@ export default {
       }
     },
     //退出登录
-    loginOut(state, user) {
+    [LOGIN_OUT](state, user) {
       Dialog.confirm({
         title: '提示',
         message: '确认退出吗',

@@ -56,6 +56,9 @@ const routes = [
   {
     path: '/detail',
     name: 'Detail',
+    meta: {
+      keepAlive: true, //此组件需要被缓存
+    },
     component: () =>
       import(/* 懒加载 */ '../views/Detail.vue'),
   },

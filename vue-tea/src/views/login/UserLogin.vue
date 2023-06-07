@@ -56,7 +56,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['USER_LOGIN']),
+    ...mapMutations(['userLogin']),
     goLogin() {
       this.$router.push('/login')
     },
@@ -92,7 +92,7 @@ export default {
           if (!res.success) return
 
           //登录成功==>跳转页面，存储用户信息
-          this.USER_LOGIN(res.data)
+          this.userLogin(res.data)
 
           //跳转到我的页面
           this.$router.push({
@@ -133,6 +133,7 @@ export default {
       width: 100%;
       height: 2.75rem;
       border-radius: 5px;
+      font-size: 0.875rem;
     }
     .login_tel {
       border: 1px solid #ccc;

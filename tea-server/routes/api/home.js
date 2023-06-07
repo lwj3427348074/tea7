@@ -100,7 +100,7 @@ router.get('/index_list/0/data/1', function (req, res, next) {
           type: 'recommedList',
           data: [
             {
-              id: 0,
+              id: 80,
               name: '龙井1號铁罐250g',
               content: '鲜爽甘醇 口粮首选',
               title: '销冠款',
@@ -108,7 +108,7 @@ router.get('/index_list/0/data/1', function (req, res, next) {
               price: '68',
             },
             {
-              id: 1,
+              id: 81,
               name: '铁观音2號250g',
               content: '核心产区滋味正',
               title: '老铁推荐',
@@ -116,7 +116,7 @@ router.get('/index_list/0/data/1', function (req, res, next) {
               price: '128',
             },
             {
-              id: 2,
+              id: 82,
               name: '正山小种3號150g',
               content: '难以忘怀的桂花香',
               title: '爆款',
@@ -124,7 +124,7 @@ router.get('/index_list/0/data/1', function (req, res, next) {
               price: '99',
             },
             {
-              id: 3,
+              id: 83,
               // name: '黑檀镂空六君子',
               // content: '给生活一点精致的仪式感',
               title: '茶友必备',
@@ -160,28 +160,28 @@ router.get('/index_list/0/data/1', function (req, res, next) {
           type: 'favoriteList',
           data: [
             {
-              id: 1,
+              id: 91,
               imgUrl: './images/home/favorite/favorite1.png',
-              name: '建盏茶具套装 红色芝麻毫 12件套',
-              price: 299,
+              name: '雨前珍稀白茶1号',
+              price: 68,
             },
             {
-              id: 2,
+              id: 92,
               imgUrl: './images/home/favorite/favorite2.jpeg',
-              name: '建盏茶具套装 红色芝麻毫 12件套',
-              price: 199,
+              name: '武夷山灰芽花香金骏眉3号',
+              price: 128,
             },
             {
-              id: 3,
+              id: 93,
               imgUrl: './images/home/favorite/favorite3.jpeg',
-              name: '建盏茶具套装 红色芝麻毫 12件套',
-              price: 99,
+              name: '2023春茶明前龙井飞花',
+              price: 128,
             },
             {
-              id: 4,
+              id: 94,
               imgUrl: './images/home/favorite/favorite4.jpeg',
-              name: '建盏茶具套装 红色芝麻毫 12件套',
-              price: 399,
+              name: '云南凤庆高海拔古树滇红',
+              price: 99,
             },
           ]
         },

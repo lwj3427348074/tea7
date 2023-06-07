@@ -160,6 +160,7 @@ export default {
       width: 100%;
       height: 2.75rem;
       border-radius: 5px;
+      font-size: 0.875rem;
     }
     .login_tel {
       border: 1px solid #ccc;

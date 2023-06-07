@@ -12,6 +12,7 @@ var searchApiRouter = require('./routes/api/search')
 var listApiRouter = require('./routes/api/list')
 var sgiApiRouter = require('./routes/api/sGoodsId')
 var loginApiRouter = require('./routes/api/login')
+var cartApiRouter = require('./routes/api/cart')
 
 var app = express();
 
@@ -33,6 +34,7 @@ app.use('/api', searchApiRouter)
 app.use('/api', listApiRouter)
 app.use('/api', sgiApiRouter)
 app.use('/api', loginApiRouter)
+app.use('/api', cartApiRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

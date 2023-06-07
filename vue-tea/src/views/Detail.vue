@@ -31,7 +31,7 @@
         </div>
         <div class="goods_name">
           <h1>{{ goods.name }}</h1>
-          <div>2023年明前龙井，全芽的外形超漂亮，口感一级棒</div>
+          <div> {{goods.content || '2023年明前龙井，全芽的外形超漂亮，口感一级棒'}}</div>
         </div>
         <div class="goods_price">
           <div class="oprice">
@@ -52,13 +52,14 @@
     </section>
 
     <footer>
-      <div class="add-cart">加入购物车</div>
+      <div class="add-cart" @click="addCart">加入购物车</div>
       <div>立即购买</div>
     </footer>
   </div>
 </template>
 
 <script>
+import { Toast } from 'vant'
 import BetterScroll from '@better-scroll/core'
 import http from '@/request/api/request'
 export default {
@@ -97,7 +98,33 @@ export default {
         },
       })
       this.goods = res
-      console.log(res)
+      console.log(this.goods)
+    },
+    //加入购物车
+    addCart() {
+      // console.log(this.$route)
+      let id = this.$route.query.id
+      // let token = JSON.parse(localStorage.getItem('teaUserInfo')).token
+      // console.log(token)
+      http
+        .$axios({
+          method: 'POST',
+          url: '/api/addCart',
+          data: {
+            goodsId: id,
+          },
+          headers: {
+            //通过true
+            token: true,
+          },
+        })
+        .then((res) => {
+          if (res.success) {
+            Toast.success(res.msg)
+          } else {
+            Toast.fail(res.msg)
+          }
+        })
     },
   },
   created() {

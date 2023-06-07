@@ -2,7 +2,7 @@
   <div class="recommend">
     <Card></Card>
     <ul>
-      <li v-for="r in recommedList" :key="r.id">
+      <li v-for="r in recommedList" :key="r.id" @click="goDetail(r.id)">
         <h2>
           <img v-lazy="r.imgUrl" alt="">
         </h2>
@@ -34,6 +34,17 @@ export default {
   },
   mounted() {
     // console.log(this.recommedList)
+  },
+  methods: {
+    goDetail(id) {
+      if (id == 83) return
+      this.$router.push({
+        path: '/detail',
+        query: {
+          id: id,
+        },
+      })
+    },
   },
 }
 </script>

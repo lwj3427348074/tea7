@@ -14,7 +14,7 @@
       <div class="login_tel">
         <input type="text" v-model.trim="userPwd" placeholder="请设置密码" pattern="[0-9]*">
       </div>
-      <div class="login_btn" @click="regisster">
+      <div class="login_btn" @click="register">
         注册
       </div>
 
@@ -112,7 +112,7 @@ export default {
       return bool
     },
     //点击注册
-    regisster() {
+    register() {
       // 验证密码
       if (!this.validate('userPwd')) return
       // 判断验证码是否正确
@@ -137,7 +137,7 @@ export default {
             },
           })
           .then((res) => {
-            console.log(res)
+            this.$router.push('/userlogin')
           })
       }
     },
@@ -159,6 +159,7 @@ export default {
       width: 100%;
       height: 2.75rem;
       border-radius: 5px;
+      font-size: 0.875rem;
     }
     .login_tel {
       border: 1px solid #ccc;

@@ -4,7 +4,7 @@
     <section>
       <div class="list-left" ref="left">
         <ul class="left-item">
-          <li :class="{active:index==currentIndex}" v-for="l,index in leftData" :key="l.id" @click="goSrcroll(l.id)">{{ l.name }}</li>
+          <li :class="{active:index==currentIndex}" v-for="l,index in leftData" :key="l.id" @click="goSrcroll(index)">{{ l.name }}</li>
         </ul>
       </div>
 

@@ -151,6 +151,8 @@ export default {
     display: flex;
     justify-content: space-between;
     div {
+      flex: 1;
+      text-align: center;
       span {
         color: #fff;
         line-height: 2.75rem;
@@ -167,6 +169,9 @@ export default {
         text-align: center;
         color: #fff;
       }
+    }
+    div:last-child {
+      text-align: right;
     }
   }
   section {

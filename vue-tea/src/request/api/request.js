@@ -32,7 +32,7 @@ export default {
     }
 
     return axios(options).then(v => {
-      console.log(v);
+      // console.log(v);
       let data = v.data.data
       return new Promise((res, rej) => {
         if (!v) return rej();

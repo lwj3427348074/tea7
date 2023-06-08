@@ -100,6 +100,26 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/address',
+    name: 'Address',
+    component: () =>
+      import(/* 懒加载 */ '../views/address/Address.vue'),
+    children: [
+      {
+        path: '/',
+        name: 'AddressIndex',
+        component: () =>
+          import(/* 懒加载 */ '../views/address/AddressIndex.vue'),
+      },
+      {
+        path: '/addressList',
+        name: 'AddressList',
+        component: () =>
+          import(/* 懒加载 */ '../views/address/AddressList.vue'),
+      }
+    ]
+  },
 ]
 
 const router = new VueRouter({

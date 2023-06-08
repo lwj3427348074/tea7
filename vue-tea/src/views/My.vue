@@ -14,12 +14,8 @@
     </header>
     <section>
       <ul>
-        <li>
-          地址管理
-        </li>
-        <li v-if="loginStatus" @click="loginOut">
-          退出登录
-        </li>
+        <li @click="goAddress">地址管理</li>
+        <li v-if="loginStatus" @click="loginOut">退出登录 </li>
       </ul>
     </section>
     <Tabbar></Tabbar>
@@ -41,11 +37,16 @@ export default {
     }),
   },
   methods: {
+    //退出登录
     ...mapMutations(['loginOut']),
+    //点击登录
     goLogin() {
       this.$router.push('/login')
     },
-    //退出登录
+    //点击我的地址
+    goAddress() {
+      this.$router.push('/address')
+    },
   },
 }
 </script>

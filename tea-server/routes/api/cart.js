@@ -3,12 +3,32 @@ var router = express.Router();
 var jwt = require('jsonwebtoken');
 var connection = require('../../db/sql')
 
+// function getTimeToken(exp) {
+//   let getTime = parseInt(new Date().getTime() / 1000)
+//   if (getTime - exp > 4320) {
+//     return true
+//   }
+// }
+
 //添加购物车
 router.post('/addCart', function (req, res, next) {
   //后端接收前端的数据
   let goodsId = req.body.goodsId
   let token = req.headers.token
   let tokenObj = jwt.decode(token)
+
+
+  // if (getTimeToken(tokenObj.exp)) {
+  //   res.send({
+  //     data: {
+  //       code: 1000,
+  //       success: false,
+  //       msg: '登录已过期'
+  //     }
+  //   })
+  //   return
+  // }
+
   //查询用户
   connection.query(`select * from user where tel = ${tokenObj.tel}`, function (error, results) {
     //用户id
@@ -68,23 +88,6 @@ router.post('/selectCart', function (req, res, next) {
   })
 })
 
-//删除购物车数据
-// router.post('/deleteCart', function (req, res, next) {
-//   let arrId = req.body.arrId;
-//   console.log(arrId);
-
-//   for (let i = 0; i < arrId.length; i++) {
-//     connection.query(`delete from goods_cart where id = ${arrId[i]}`, function (error, results) {
-//       res.send({
-//         data: {
-//           code: 200,
-//           success: true,
-//           msg: '删除成功',
-//         }
-//       })
-//     })
-//   }
-// })
 
 //删除购物车数据
 router.post('/deleteCart', function (req, res, next) {

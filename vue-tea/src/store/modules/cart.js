@@ -12,24 +12,23 @@ export default {
     isCheckedAll(state) {
       return state.list.length == state.selectList.length
     },
+    // 总计数量与价格
     total(state) {
-      return state.list.reduce((sum, item) => {
-        if (item.checked) {
-          return sum + Number(item.goods_price)
-        } else {
-          return sum
+      let total = {
+        num: 0,
+        price: 0,
+      }
+      // 循环进行计算总价与价格
+      state.list.forEach((v) => {
+        // 判断只有选中才可以进行相加
+        if (v.checked) {
+          total.num += parseInt(v.goods_num)
+          total.price += v.goods_price * v.goods_num
         }
-      }, 0).toFixed(2)
+      })
+
+      return total
     },
-    num(state) {
-      return state.list.reduce((sum, item) => {
-        if (item.checked) {
-          return sum + Number(item.goods_num)
-        } else {
-          return sum
-        }
-      }, 0)
-    }
   },
   mutations: {
     [CART_LIST](state, cartArr) {
@@ -38,8 +37,8 @@ export default {
       cartArr.forEach(v => {
         state.selectList.push(v.id)
       })
-      console.log(state.list);
-      console.log(state.selectList);
+      // console.log(state.list);
+      // console.log(state.selectList);
     },
     //全选
     [CHECK_ALL](state) {

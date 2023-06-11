@@ -2,7 +2,16 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import HomeView from '../views/Home.vue'
 
+const originalPush = VueRouter.prototype.push;
+VueRouter.prototype.push = function push(location, onResolve, onReject) {
+  if (onResolve || onReject)
+    return originalPush.call(this, location, onResolve, onReject);
+  return originalPush.call(this, location).catch((err) => err);
+};
+
 Vue.use(VueRouter)
+
+
 
 const routes = [
 
@@ -120,12 +129,42 @@ const routes = [
       }
     ]
   },
+  {
+    path: '/order',
+    name: 'Order',
+    meta: {
+      keepAlive: true, //此组件需要被缓存
+    },
+    component: () =>
+      import(/* 懒加载 */ '../views/Order.vue'),
+  },
+  {
+    path: '/payment',
+    name: 'Payment',
+    component: () =>
+      import(/* 懒加载 */ '../views/Payment.vue'),
+  },
 ]
+
+
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes,
+})
+//导航守卫
+router.beforeEach((to, from, next) => {
+  let nextRoute = ['Payment', 'Cart', 'Address', 'Order', 'AddressIndex', 'AddressList']
+  //是否是登录中
+  let userInfo = JSON.parse(localStorage.getItem('teaUserInfo'))
+  //当前进入的页面，是不是需要验证的页面
+  if (nextRoute.indexOf(to.name) >= 0) {
+    if (!userInfo) {
+      router.push('/userlogin')
+    }
+  }
+  next()
 })
 
 export default router

@@ -1,5 +1,9 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
+  //打包的时候要加的配置
+  publicPath: './',
+
+
 
   transpileDependencies: true,
   lintOnSave: false, //检查命名规范
@@ -18,27 +22,5 @@ module.exports = defineConfig({
       }
     }
   },
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // configureWebpack: (config) => {
-  //   config.resolve = {
-  //     extensions: ['.js', '.json', '.vue'],
-  //     alias: {
-  //       '@': path.resolve(__dirname, './src')
-  //     }
-  //   }
-  // }
-
 
 })

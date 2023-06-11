@@ -56,24 +56,24 @@
       </div>
       <div class="total" v-show="isEdit">
         <div>共有
-          <span class="total-active">{{ num }}</span>
+          <span class="total-active">{{ total.num }}</span>
           件商品
         </div>
         <div>
           <span>总计：</span>
-          <span class="total-active">￥{{total}} + 0茶币</span>
+          <span class="total-active">￥{{total.price}} + 0茶币</span>
         </div>
       </div>
-      <div class="order" v-if="isEdit">
+      <div class="order" v-if="isEdit" @click="goOrder">
         去结算
       </div>
       <div class="order" v-if="!isEdit" @click="delGoodsFn"> 删除 </div>
     </footer>
-
   </div>
 </template>
 
 <script>
+import { Toast } from 'vant'
 import { mapActions, mapGetters, mapMutations, mapState } from 'vuex'
 import http from '@/request/api/request'
 export default {
@@ -88,16 +88,61 @@ export default {
   computed: {
     ...mapState({
       list: (state) => state.cart.list,
-      // selectList: (state) => state.cart.selectList,
+      selectList: (state) => state.cart.selectList,
     }),
-    ...mapGetters(['isCheckedAll', 'total', 'num']),
+    ...mapGetters(['isCheckedAll', 'total']),
+    goosList() {
+      return this.selectList.map((id) => {
+        return this.list.find((l) => l.id == id)
+      })
+    },
   },
   created() {
     this.getData()
   },
   methods: {
-    ...mapMutations(['cartList', 'checkItem']),
+    ...mapMutations(['cartList', 'checkItem', 'initOrder']),
     ...mapActions(['checkAllFn', 'delGoodsFn']),
+    //去结算
+    goOrder() {
+      if (this.selectList.length > 0) {
+        //发起请求生成一个订单
+        let newList = []
+        this.list.forEach((l) => {
+          this.selectList.filter((s) => {
+            if (s == l.id) {
+              newList.push(l)
+            }
+          })
+        })
+        http
+          .$axios({
+            url: 'api/addOrder',
+            method: 'POST',
+            headers: {
+              token: true,
+            },
+            data: {
+              arr: newList,
+            },
+          })
+          .then((res) => {
+            if (!res.success) return
+            //存储订单号
+            this.initOrder(res.data)
+            //进入提交订单页面
+            this.$router.push({
+              path: '/order',
+              query: {
+                detail: JSON.stringify(this.selectList),
+                goodsList: JSON.stringify(this.goosList),
+              },
+            })
+          })
+      } else {
+        Toast.fail('您还未选择商品')
+      }
+    },
     getData() {
       http
         .$axios({
@@ -108,12 +153,9 @@ export default {
           },
         })
         .then((res) => {
-          console.log(res.data)
-
           res.data.forEach((v) => {
             v['checked'] = true
           })
-          console.log(res.data)
           this.cartList(res.data)
         })
     },
@@ -125,7 +167,6 @@ export default {
     changeNum(value, item) {
       //当前购物车商品的id以及修改后的数量==>传递给后端
       //value就是修改后的数量
-      console.log(value, item.id)
       http.$axios({
         url: '/api/updateNum',
         method: 'POST',
@@ -144,6 +185,7 @@ export default {
 
 <style lang="less" scoped>
 .cart {
+  width: 100vw;
   header {
     width: 100vw;
     height: 2.75rem;
@@ -177,6 +219,9 @@ export default {
   section {
     flex: 1;
     background-color: #f5f5f5;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
     .cart-title {
       display: flex;
       padding: 1.25rem;
@@ -229,6 +274,9 @@ export default {
           height: 4.625rem;
         }
       }
+      li:last-child {
+        margin-bottom: 3rem;
+      }
     }
   }
   .nodata {
@@ -242,6 +290,9 @@ export default {
     }
   }
   footer {
+    position: fixed;
+    bottom: 0;
+    background-color: #fff;
     justify-content: space-between;
     display: flex;
     width: 100%;

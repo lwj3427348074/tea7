@@ -5,23 +5,44 @@ var userSql = require('../../db/userSql.js')
 var QcloudSms = require("qcloudsms_js");
 
 
+
 //手机密码登录
 router.post('/login', function (req, res, next) {
-  console.log(req.body, req.body.userPwd);
   //后端接收前端传过来的值
   let params = {
     userTel: req.body.userTel,
     userPwd: req.body.userPwd
   }
+
+  // let userTel = params.userTel
+  // let userPwd = params.userPwd || '666666'
+
+  // //引入token
+  // var jwt = require('jsonwebtoken');
+  // //用户信息
+  // let payload = {
+  //   tel: userTel
+  // }
+  // //口令
+  // let secret = 'luowangji'
+  // //生成token
+  // let token = jwt.sign(payload, secret, {
+  //   //设置过期时间
+  //   expiresIn: 4320
+  // })
+
+
   //查询用户手机号是否存在
   connection.query(userSql.queryUserTel(params), function (err, results) {
-    if (err) throw err
+    //记录的id
+    let id = results[0].id
     //手机号存在
     if (results.length > 0) {
       connection.query(userSql.queryUserPwd(params), function (error, result) {
         if (error) throw error
         //手机和密码都对
         if (result.length > 0) {
+          // connection.query(`update user set token = '${token}' where id = ${id}`, function (err, resu) {
           res.json({
             code: 200,
             data: {
@@ -29,6 +50,7 @@ router.post('/login', function (req, res, next) {
               data: result[0]
             }
           })
+          // })
         } else {
           //密码错误
           res.json({
@@ -51,8 +73,6 @@ router.post('/login', function (req, res, next) {
       })
     }
   })
-
-
 })
 
 //短信验证码登录

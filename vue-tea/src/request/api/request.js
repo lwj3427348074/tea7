@@ -34,6 +34,12 @@ export default {
     return axios(options).then(v => {
       // console.log(v);
       let data = v.data.data
+
+      // if (data.code === 1000) {
+      //   Toast.clear()
+      //   return router.push('/userlogin')
+      // }
+
       return new Promise((res, rej) => {
         if (!v) return rej();
 

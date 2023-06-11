@@ -102,10 +102,13 @@ export default {
     },
     //加入购物车
     addCart() {
-      // console.log(this.$route)
+      let token = JSON.parse(localStorage.getItem('teaUserInfo'))
+      if (!token) {
+        Toast.fail('您还未登录')
+        this.$router.push('/userlogin')
+        return
+      }
       let id = this.$route.query.id
-      // let token = JSON.parse(localStorage.getItem('teaUserInfo')).token
-      // console.log(token)
       http
         .$axios({
           method: 'POST',

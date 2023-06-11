@@ -4,7 +4,7 @@
     <section>
       <ul v-if="list.length">
         <li v-for="l in list" :key="l.id">
-          <div>
+          <div @click="goSelect(l)">
             <div>
               <span>{{ l.name }}</span>
               <span>{{ l.tel }}</span>
@@ -37,6 +37,11 @@ import Tabbar from '@/components/common/Tabbar.vue'
 import { mapMutations, mapState } from 'vuex'
 export default {
   name: 'AddressIndex',
+  data() {
+    return {
+      addressStatus: false,
+    }
+  },
   components: {
     Header,
     Tabbar,
@@ -62,6 +67,10 @@ export default {
           this.initData(res.data)
         })
     },
+    goSelect(item) {
+      this.$bus.$emit('selectAddress', JSON.stringify(item))
+      this.$router.back()
+    },
     //添加地址
     goList(option) {
       this.$router.push({
@@ -73,6 +82,11 @@ export default {
     },
   },
   created() {
+    //从订单页面进来的
+    if (this.$route.query.type == 'select') {
+      this.addressStatus = true
+    }
+
     this.getData()
   },
 }

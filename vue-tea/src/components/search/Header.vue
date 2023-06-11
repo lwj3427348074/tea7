@@ -10,7 +10,7 @@
         <van-icon name="search" size="18" />
       </div>
       <form action="" onsubmit="return false" @keyup.enter="toSearchList">
-        <input type="search" placeholder="搜您喜欢的..." v-model.trim="inputValue">
+        <input type="search" placeholder="搜您喜欢的..." v-model.trim="inputValue" autofocus>
       </form>
 
     </div>

@@ -10,3 +10,6 @@ export const CHECK_ITEM = 'checkItem'
 
 //我的收货地址
 export const INIT_DATA = 'initData'
+
+//我的订单
+export const INIT_ORDER = 'initOrder'

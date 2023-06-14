@@ -58,7 +58,7 @@ export default {
     }
   },
   methods: {
-    ...mapMutations(['USER_LOGIN']),
+    ...mapMutations(['userLogin']),
     goUserLogin() {
       this.$router.push('/userLogin')
     },
@@ -131,7 +131,7 @@ export default {
           .then((res) => {
             if (!res.success) return
             //登录成功==>跳转页面，存储用户信息
-            this.USER_LOGIN(res.data)
+            this.userLogin(res.data)
 
             //跳转到我的页面
             this.$router.push({
@@ -148,6 +148,8 @@ export default {
 
 <style scoped lang="less">
 .login-message {
+  height: 100vh;
+  background-color: #f5f5f5;
   section {
     background-color: #f5f5f5;
     display: flex;
@@ -167,6 +169,7 @@ export default {
       input {
         border: 0px;
         margin-left: 0.625rem;
+        background-color: #f5f5f5;
       }
     }
     .login_code {
@@ -177,6 +180,7 @@ export default {
         width: 60%;
         border: 0px;
         margin-left: 0.625rem;
+        background-color: #f5f5f5;
       }
       button {
         flex: 4;

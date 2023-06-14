@@ -121,8 +121,9 @@ export default {
 
 <style scoped lang="less">
 .login-message {
+  height: 100vh;
+  background-color: #f5f5f5;
   section {
-    background-color: #f5f5f5;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -140,6 +141,7 @@ export default {
       input {
         border: 0px;
         margin-left: 0.625rem;
+        background-color: #f5f5f5;
       }
     }
     .login_code {
@@ -150,6 +152,7 @@ export default {
         width: 60%;
         border: 0px;
         margin-left: 0.625rem;
+        background-color: #f5f5f5;
       }
       button {
         flex: 4;

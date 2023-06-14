@@ -1,6 +1,5 @@
 <template>
   <div class="Search">
-    <!-- <router-view></router-view> -->
     <Header></Header>
     <!-- <SearchList></SearchList> -->
     <section>

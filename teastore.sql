@@ -11,7 +11,7 @@
  Target Server Version : 80019
  File Encoding         : 65001
 
- Date: 11/06/2023 12:07:12
+ Date: 14/06/2023 07:35:14
 */
 
 SET NAMES utf8mb4;
@@ -33,7 +33,7 @@ CREATE TABLE `address`  (
   `isDefault` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `areaCode` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 14 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
@@ -41,7 +41,11 @@ CREATE TABLE `address`  (
 INSERT INTO `address` VALUES (9, 12, '张三2', '17788889999', '福建省', '厦门市', '集美区', '1023', '0', '350211');
 INSERT INTO `address` VALUES (10, 12, '李四', '16655442233', '吉林省', '辽源市', '东丰县', '2230', '0', '220421');
 INSERT INTO `address` VALUES (11, 12, '王五', '15548889666', '澳门特别行政区', '离岛', '嘉模堂区', '7756', '1', '820202');
-INSERT INTO `address` VALUES (13, 9, '张三', '17770749528', '北京市', '北京市', '东城区', '1002', '1', '110101');
+INSERT INTO `address` VALUES (13, 9, '张三', '17770749528', '北京市', '北京市', '东城区', '1002', '0', '110101');
+INSERT INTO `address` VALUES (14, 9, '李四', '18855556666', '北京市', '北京市', '东城区', '021', '0', '110101');
+INSERT INTO `address` VALUES (15, 11, '张三', '18855556666', '北京市', '北京市', '延庆区', '102', '0', '110119');
+INSERT INTO `address` VALUES (16, 11, '444', '15266665555', '吉林省', '长春市', '南关区', '564', '1', '220102');
+INSERT INTO `address` VALUES (17, 9, '777', '16677778888', '北京市', '北京市', '延庆区', '他温热', '1', '110119');
 
 -- ----------------------------
 -- Table structure for goods_cart
@@ -56,11 +60,12 @@ CREATE TABLE `goods_cart`  (
   `goods_num` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `goods_imgUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 32 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 74 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_cart
 -- ----------------------------
+INSERT INTO `goods_cart` VALUES (81, '11', '81', '铁观音2號250g', '128', '1', '/images/home/recommend/recommend2.jpg');
 
 -- ----------------------------
 -- Table structure for goods_list
@@ -75,7 +80,7 @@ CREATE TABLE `goods_list`  (
   `imgUrl` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `zh` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 95 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 94 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_list
@@ -85,12 +90,12 @@ INSERT INTO `goods_list` VALUES (2, '雨前头采碧螺春1号散茶', NULL, '44
 INSERT INTO `goods_list` VALUES (3, '黄山太平猴魁绿茶1号', NULL, '22', '3', '/images/list/product3.png', NULL);
 INSERT INTO `goods_list` VALUES (4, '无烟工艺正山小种2号', NULL, NULL, '4', '/images/list/product4.png', NULL);
 INSERT INTO `goods_list` VALUES (80, '龙井1號铁罐250g', '鲜爽甘醇 口粮首选', '68', '5', '/images/home/recommend/recommend1.jpg', NULL);
-INSERT INTO `goods_list` VALUES (81, '铁观音2號250g', '核心产区滋味正', '128', '6', './images/home/recommend/recommend2.jpg', NULL);
-INSERT INTO `goods_list` VALUES (82, '正山小种3號150g', '难以忘怀的桂花香', '99', '7', './images/home/recommend/recommend3.jpg', NULL);
-INSERT INTO `goods_list` VALUES (91, '雨前珍稀白茶1号', '泡后酷似凤羽，名为白茶实为绿茶，新手辨茶不可绕过的路。', '68', '8', './images/home/favorite/favorite1.png', NULL);
-INSERT INTO `goods_list` VALUES (92, '武夷山灰芽花香金骏眉3号', '全芽采摘，特色是香气浓，口感偏向清甜类型，适合简单泡饮\r\n', '128', '9', './images/home/favorite/favorite2.jpeg', NULL);
-INSERT INTO `goods_list` VALUES (93, '2023春茶明前龙井飞花', '2023年明前龙井，全芽的外形超漂亮，口感一级棒\r\n               ', '128', '0', './images/home/favorite/favorite3.jpeg', NULL);
-INSERT INTO `goods_list` VALUES (94, '云南凤庆高海拔古树滇红', '采用80年以上的古树原料制作，手工工艺细制而成', '99', NULL, './images/home/favorite/favorite4.jpeg', NULL);
+INSERT INTO `goods_list` VALUES (81, '铁观音2號250g', '核心产区滋味正', '128', '6', '/images/home/recommend/recommend2.jpg', NULL);
+INSERT INTO `goods_list` VALUES (82, '正山小种3號150g', '难以忘怀的桂花香', '99', '7', '/images/home/recommend/recommend3.jpg', NULL);
+INSERT INTO `goods_list` VALUES (91, '雨前珍稀白茶1号', '泡后酷似凤羽，名为白茶实为绿茶，新手辨茶不可绕过的路。', '68', '8', '/images/home/favorite/favorite1.png', NULL);
+INSERT INTO `goods_list` VALUES (92, '武夷山灰芽花香金骏眉3号', '全芽采摘，特色是香气浓，口感偏向清甜类型，适合简单泡饮\r\n', '128', '9', '/images/home/favorite/favorite2.jpeg', NULL);
+INSERT INTO `goods_list` VALUES (93, '2023春茶明前龙井飞花', '2023年明前龙井，全芽的外形超漂亮，口感一级棒\r\n               ', '128', '0', '/images/home/favorite/favorite3.jpeg', NULL);
+INSERT INTO `goods_list` VALUES (94, '云南凤庆高海拔古树滇红', '采用80年以上的古树原料制作，手工工艺细制而成', '99', '5', '/images/home/favorite/favorite4.jpeg', NULL);
 
 -- ----------------------------
 -- Table structure for goods_order
@@ -105,7 +110,7 @@ CREATE TABLE `goods_order`  (
   `order_status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `uId` int NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 90 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goods_order
@@ -157,6 +162,11 @@ INSERT INTO `goods_order` VALUES (87, '20230611110439785715', '铁观音2號250g
 INSERT INTO `goods_order` VALUES (88, '20230611110620930911', '雨前珍稀白茶1号,云南凤庆高海拔古树滇红', '334', '4', '2', 9);
 INSERT INTO `goods_order` VALUES (89, '20230611110711252542', '武夷山灰芽花香金骏眉3号,2023春茶明前龙井飞花', '640', '5', '2', 9);
 INSERT INTO `goods_order` VALUES (90, '20230611111105460405', '铁观音2號250g,正山小种3號150g', '326', '3', '2', 9);
+INSERT INTO `goods_order` VALUES (91, '20230613193221256201', '2023春茶明前龙井飞花,云南凤庆高海拔古树滇红', '227', '2', '2', 11);
+INSERT INTO `goods_order` VALUES (92, '20230613193601970042', '铁观音2號250g', '128', '1', '2', 11);
+INSERT INTO `goods_order` VALUES (93, '20230613194351200908', '龙井1號铁罐250g', '68', '1', '2', 11);
+INSERT INTO `goods_order` VALUES (94, '20230613194615768203', '铁观音2號250g', '128', '1', '1', 11);
+INSERT INTO `goods_order` VALUES (95, '20230614072507651135', '龙井1號铁罐250g,正山小种3號150g', '167', '2', '2', 9);
 
 -- ----------------------------
 -- Table structure for user
@@ -170,7 +180,7 @@ CREATE TABLE `user`  (
   `nickName` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 12 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
